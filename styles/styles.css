@@ -1,0 +1,813 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+body{
+	/*background-color: hsl(240, 71%, 20%, 0.025);*/
+	background-image: url('images/bg.png');
+}
+p{
+	font-size: 17px;
+	line-height: 2.0em;
+	text-align: justify;
+	font-family: lucida;
+}
+.container{
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+}
+/* --- Header / Top Bar Styles --- */
+.responsive-nav-header {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* High z-index to stay on top */
+}
+
+.responsive-nav-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff; /* Ensure top bar background is white */
+}
+
+.responsive-nav-logo img {
+    max-width: 120px;
+    height: auto;
+    display: block; /* Remove extra space below image */
+}
+
+.responsive-nav-quick-links .responsive-nav-login-link {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.responsive-nav-quick-links .responsive-nav-login-link li a {
+    text-decoration: none;
+    color: hsla(240, 70%, 20%, 1.0); /* Dark blue */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.responsive-nav-quick-links .responsive-nav-login-link li a:hover {
+    color: hsla(240, 70%, 40%, 1.0); /* Lighter on hover */
+}
+
+/* --- Main Navigation Styles --- */
+.responsive-nav-main-nav {
+    background-color: hsla(240, 70%, 20%, 1.0); /* Dark blue background */
+    padding: 0 20px;
+    min-height: 50px; /* Ensures background color is visible even when menu collapses */
+    display: flex;
+    justify-content: flex-end; /* Align links to the right by default */
+    align-items: center; /* Vertically center links */
+    position: relative; /* For toggle button positioning */
+}
+
+.responsive-nav-links {
+    list-style: none;
+    display: flex; /* Desktop: horizontal layout */
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+.responsive-nav-links li {
+    position: relative; /* For sub-menu positioning */
+    display: block;
+}
+
+.responsive-nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 15px; /* Ample padding for click area */
+    display: block; /* Make whole padding area clickable */
+    white-space: nowrap; /* Prevent links from wrapping */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.responsive-nav-links li a:hover {
+    background-color: #ff0; 
+    color: hsla(240, 70%, 10%, 1.0); 
+}
+
+/* --- Sub-menu Styles (Desktop) --- */
+.responsive-nav-sub-links {
+    list-style: none;
+    position: absolute;
+    top: 100%; /* Position directly below parent link */
+    left: 0;
+    background-color: hsla(240, 70%, 20%, 1.0); /* Same as main nav */
+    min-width: 200px; /* Sufficient width for dropdowns */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    display: none; /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10; /* Ensure sub-menus are above page content */
+}
+
+.responsive-nav-sub-links li a {
+    padding: 10px 15px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.responsive-nav-sub-links li a:hover {
+    background-color: #ff0;
+    color: hsla(240, 70%, 10%, 1.0);
+    border-bottom: 1px solid #fff;
+}
+
+/* Show sub-menu on parent hover */
+.responsive-nav-links li.has-submenu:hover > .responsive-nav-sub-links {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Nested Sub-menu Styles (Desktop - Level 2) --- */
+.responsive-nav-sub-links-level2 {
+    top: 0; /* Align with the parent sub-menu item */
+    left: 100%; /* Position to the right of the parent sub-menu item */
+    border-left: 1px solid rgba(255,255,255,0.1); /* Visual separator */
+}
+
+/* Show Level 2 sub-menu on parent (Level 1) sub-menu item hover */
+.responsive-nav-sub-links li.has-submenu:hover > .responsive-nav-sub-links-level2 {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Hamburger Toggle Button Styles (Hidden by default) --- */
+.responsive-nav-toggle-btn {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px; /* Position to the right within .responsive-nav-main-nav */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100; /* Above nav-links when open */
+}
+
+.responsive-nav-toggle-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger Animation (Optional but nice) */
+.responsive-nav-toggle-btn.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+.responsive-nav-toggle-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.responsive-nav-toggle-btn.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* --- Mobile Styles (Media Query) --- */
+@media (max-width: 900px) { /* Adjust this breakpoint as needed for tablet/mobile */
+    .responsive-nav-top-bar {
+        flex-wrap: wrap; /* Allow elements to wrap if space is tight */
+    }
+
+    .responsive-nav-main-nav {
+        justify-content: flex-start; /* Align internal content to start */
+        padding: 0; /* Remove default padding for full width menu */
+        min-height: 50px; /* Ensure main nav background height */
+    }
+
+    .responsive-nav-toggle-btn {
+        display: flex; /* Show hamburger on mobile */
+    }
+
+    .responsive-nav-links {
+        flex-direction: column; /* Stack menu items vertically */
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Position below the visible top bar of .responsive-nav-main-nav */
+        left: 0;
+        background-color: hsla(240, 70%, 20%, 1.0); /* Full menu background */
+        border-top: 1px solid rgba(255,255,255,0.1);
+        max-height: 0; /* Used for slide-down animation */
+        overflow: hidden; /* Hide content that exceeds max-height */
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        opacity: 0;
+        z-index: 90; /* Below toggle button, above page content */
+    }
+
+    .responsive-nav-links.active {
+        max-height: 500px; /* Large enough to show all menu items */
+        opacity: 1;
+        padding-bottom: 10px; /* Add some padding at the bottom of the open menu */
+    }
+
+    .responsive-nav-links li {
+        width: 100%;
+        text-align: left; /* Align text within menu items */
+    }
+
+    .responsive-nav-links li a {
+        padding: 10px 20px; /* More padding for touch targets */
+        width: 100%; /* Make entire area clickable */
+    }
+
+    .responsive-nav-links li a:hover {
+        background-color: hsla(240, 70%, 30%, 1.0);
+    }
+
+    /* --- Mobile Sub-menu Styles --- */
+    .responsive-nav-sub-links {
+        position: static; /* Remove absolute positioning */
+        width: 100%; /* Take full width of parent */
+        background-color: rgba(240, 70%, 20%, 0.9); /* Slightly different shade for nested */
+        box-shadow: none; /* No shadow on mobile sub-menus */
+        padding-left: 20px; /* Indent sub-links */
+        display: none; /* Hidden by default on mobile, revealed by JS */
+        opacity: 1; /* Override desktop opacity */
+        visibility: visible; /* Override desktop visibility */
+        transition: none; /* No transitions needed for mobile click expand */
+    }
+
+    .responsive-nav-sub-links-level2 {
+        padding-left: 40px; /* Further indent for 2nd level */
+    }
+
+    /* Override desktop hover for mobile (JS will handle click toggling) */
+    .responsive-nav-links li.has-submenu:hover > .responsive-nav-sub-links,
+    .responsive-nav-sub-links li.has-submenu:hover > .responsive-nav-sub-links-level2 {
+        display: none; /* Ensure hover doesn't open on mobile */
+    }
+
+    /* Mobile: Show sub-menu when parent li has 'active' class (set by JS) */
+    .responsive-nav-links li.active > .responsive-nav-sub-links,
+    .responsive-nav-sub-links li.active > .responsive-nav-sub-links-level2 {
+        display: block;
+    }
+
+    .responsive-nav-sub-links li a {
+        padding: 8px 25px; /* Adjust padding for sub-links */
+    }
+}
+
+/* Small screen adjustments for login link if needed */
+@media (max-width: 480px) {
+    .responsive-nav-logo img {
+        max-width: 100px;
+        height: auto;
+    }
+    .responsive-nav-quick-links .responsive-nav-login-link li a {
+        font-size: 14px;
+    }
+}
+
+.main{
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+}
+.section-area{
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+}
+.slider-container {
+    position: relative;
+    width: 100%; /* Adjust as needed */
+    height: 80vh; /* Adjust as needed */
+    overflow: hidden; /* This is crucial to hide images outside the view */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.image-wrapper {
+    display: flex; /* Arranges images in a row */
+    width: 100%; /* Will be overridden by JS for horizontal movement */
+    height: 100%;
+    transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
+}
+
+.image-wrapper img {
+    width: 100%; /* Each image takes full width of the visible area */
+    height: 100%;
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    flex-shrink: 0; /* Prevents images from shrinking */
+}
+
+/* REMOVED: .prev-btn, .next-btn styles */
+
+.dots-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px; /* Space between dots */
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #333;
+}
+.slide{
+	position: absolute;
+}
+.content-1{
+	display: flex;
+	flex-direction: row;
+}
+.side-bar{
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+}
+.side-bar-element{
+	width: 100%;
+	padding: 10px;
+}
+.side-bar-element:last-child{
+	flex-grow: 1;
+}
+.article-item{
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	padding: 20px;
+}
+.content{
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 5vh;
+	/*background-color: hsl(240, 71%, 20%, 0.025);*/
+}
+.posts{
+	display: flex;
+	flex-direction: row;
+	margin: 30px 0px;
+	overflow-x: scroll;
+}
+.new-post{
+	width: 20%;
+	min-height: 30vh;
+	margin-right: 10px;
+	padding: 10px;
+	background-color: #eef;
+}
+.new-post:last-child{
+	margin-right: 0px;
+}
+.content-item{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 60px 25px;
+	transform: translateY(20px);
+	animation-fill-mode: forwards;
+	animation: slideInLeft 10s ease-out forwards;
+	background-color: #fff;
+}
+.content-item-side{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #0f0f57;
+	/*background: linear-gradient(to right, #0f0f57, #ffffff) 1;*/
+	/*box-shadow: 1px 1px 0px 4px rgba(0, 0, 0, 0.2);*/
+	/*border: 2px solid #0f0f57;*/
+}
+.content-item-content{
+	width: 70%;
+}
+/*Animation of divs*/
+@keyframes slideInLeft{
+	0%{
+		transform: translateX(-100px);
+		opacity: 0;
+	}
+	100%{
+		transform: translateX(0px);
+		opacity: 1;
+	}
+}
+.content-item h4{
+	font-size: 18px;
+	font-weight: bolder;
+	margin-bottom: 10px;
+	color: #ffffff;
+}
+.content-item p{
+	padding: 0px 30px;
+	border-left: 5px solid;
+	border-image: linear-gradient(to bottom, hsla(240, 70%, 20%, 1.0), gold) 1;
+}
+.content-item ol{
+	text-align: justify;
+	padding-left: 20px;
+	line-height: 2em;
+	font-size: 16px;
+	font-family: lucida
+}
+.content-sub-item1{
+	display: flex;
+	width: 65%;
+	padding: 20px;
+	border-radius: 10px;
+	/*box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);*/
+	position: relative;
+}
+.content-sub-item1-side, .content-sub-item2-side{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: shrink;
+}
+.content-sub-item1-side{
+	width: 35%;
+	background-color: #0f0f57;
+}
+.content-sub-item1-content{
+	width: 65%;
+	padding: 0px 20px;
+}
+.content-sub-item2{
+	display: flex;
+	width: 35%;
+	padding: 20px;
+	border-radius: 20px;
+	/*box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);*/
+}
+.content-sub-item2-side{
+	width: 55%;
+	background-color: #0f0f57;
+}
+.content-sub-item2-content{
+	width: 45%;
+	padding: 0px 20px;
+}
+.content-item h4{
+	font-size: 28px;
+	padding-top: 20px;
+}
+.content-item3-content{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid #0f0f57;
+	border-radius: 20px;
+}
+.content-item3-content h4{
+	color: #0f0f57;
+}
+@media (max-width: 768px){
+	.content-1{
+		flex-direction: column;
+	}
+	.side-bar .article-item{
+		width: 100%;
+	}
+	.content-item{
+		flex-direction: column;
+	}
+	.content-item:last-child{
+		flex-direction: column;
+	}
+	.content-sub-item1{
+		width: 100%;
+		flex-direction: column;
+	}
+	.content-sub-item2{
+		width: 100%;
+		flex-direction: column;
+	}
+	.content-item-side, .content-item-content, .content-sub-item1-side, .content-sub-item2-side, .content-sub-item1-content, .content-sub-item2-content{
+		width: 100%;
+	}
+	.content-item-side, .content-sub-item1-side, .content-sub-item2-side{
+		display: flex;
+		gap: 40px;
+	}
+	.content-item-content, .content-sub-item1-content, .content-sub-item2-content{
+		padding-top: 40px;
+	}
+}
+.fa-address-card, .fa-circle-dot, .fa-bullseye, .fa-star{
+	font-size: 100px;
+	color: #ffffff;
+}
+.footer-1{
+	display: flex;
+	flex-direction: row;
+	background-color: #eef;
+	border-top: 20px solid;
+	border-image: linear-gradient(to right, hsla(240, 70%, 20%, 1.0), gold, hsla(240, 70%, 20%, 1.0)) 1;
+}
+.footer-item{
+	width: 20%;
+	padding: 20px;
+	text-align: left;
+	margin-bottom: 20px;
+	line-height: 2em;
+	color: hsla(240, 70%, 20%, 1.0);
+}
+.footer-item p{
+	text-align: center;
+}
+.footer-item h5{
+	font-size: 18px;
+	font-weight: bolder;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+.footer-links{
+	list-style: none;
+}
+.footer-links li a{
+	text-decoration: none;
+}
+.footer-2{
+	background-color: #eef;
+	text-align: center;
+	padding: 20px 0px;
+}
+.footer-2 p{
+	text-align: center;
+}
+.signup-container{
+	width: 40%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 20px;
+	min-height: 100vh;
+	background-color: #eef;
+}
+.signup-form{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.Signup-header h1{
+	font-size: 24px;
+	text-align: center;
+	color: hsla(240, 70%, 20%, 1.0);
+}
+.signup-fied{
+	margin-bottom: 10px;
+}
+.signup-fied input[type = "text"]{
+	width: 100%;
+	height: 30px;
+	padding: 10px;
+	font-size: 16px;
+	background: none;
+	border: 1px solid hsla(240, 70%, 20%, 1.0);
+	color: hsla(240, 70%, 20%, 1.0);
+}
+.signup-fied input[type = "email"]{
+	width: 100%;
+	height: 30px;
+	font-size: 16px;
+	padding: 10px;
+	background: none;
+	border: 1px solid hsla(240, 70%, 20%, 1.0);
+	color: hsla(240, 70%, 20%, 1.0);
+}
+.signup-fied input[type = "tel"]{
+	width: 100%;
+	height: 30px;
+	font-size: 16px;
+	padding: 10px;
+	background: none;
+	border: 1px solid hsla(240, 70%, 20%, 1.0);
+	color: hsla(240, 70%, 20%, 1.0);
+}
+.signup-fied input[type = "password"]{
+	width: 100%;
+	height: 30px;
+	font-size: 16px;
+	padding: 10px;
+	background: none;
+	border: 1px solid hsla(240, 70%, 20%, 1.0);
+	color: hsla(240, 70%, 20%, 1.0);
+}
+.signup-fied input[type = "radio"]{
+	width: 50px;
+	height: 18px;
+	background: none;
+	color: hsla(240, 70%, 20%, 1.0);
+	border: 1px solid hsla(240, 70%, 20%, 1.0);
+}
+.signup-fied input[type = "text"]:hover,
+.signup-fied input[type = "email"]:hover,
+.signup-fied input[type = "password"]:hover,
+.signup-fied input[type = "tel"]:hover{
+	border: 2px solid #00f;
+}
+.signup-fied label{
+	font-size: 16px;
+	font-weight: bolder;
+}
+.signup-fied .submit-btn{
+	width: 100%;
+	height: 30px;
+	position: relative;
+	top: 20px;
+	border: none;
+	cursor: pointer;
+	color: hsla(240, 70%, 20%, 1.0);
+	font-size: 18px;
+	box-shadow: 0px 2px 2px 2px hsla(240, 70%, 20%, 0.2);
+}
+.signup-fied .submit-btn:hover{
+	background-color: hsla(240, 70%, 20%, 1.0);
+	color: #fff;
+}
+.required-field{
+	font-size: 18px;
+	color: #f00;
+	font-weight: bolder;
+}
+.signup-text{
+	margin-top: 20px;
+}
+.signup-text p{
+	line-height: 2.0em;
+}
+.signup-text a{
+	text-decoration: none;
+}
+.fa-solid, .fa-brands{
+	margin-right: 10px;
+}
+.fa-whatsapp{
+	color: #0f0;
+}
+.fa-location-dot, .fa-lock, .fa-user{
+	color: hsla(240, 70%, 20%, 1.0);
+}
+.fa-youtube{
+	color: #f00;
+}
+@media (max-width: 768px){
+	body{
+		margin: 0px;
+	}
+	.section-area{
+		flex-direction: column;
+		width: 100%;
+	}
+	.article-item{
+		flex-direction: column;
+		width: 100%;
+	}
+	.side-bar{
+		width: 100%;
+	}
+	.content{
+		padding: 20px;
+	}
+	.img-cont{
+		width: 100%;
+	}
+	.footer-1{
+		flex-direction: column;
+	}
+	.footer-item{
+		width: 100%;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	.signup-container{
+		width: 90%;
+	}
+	p, h5{
+		font-size: 18px;
+	}
+}
+
+/*Contact us page*/
+.contact-us-main{
+	display: flex;
+	flex-direction: row;
+	min-height: 50vh;
+	background: linear-gradient(to bottom, #eef, #fff);
+	flex-direction: column;
+}
+.contact-us-side-bar{
+	width: 20%;
+}
+.contact-us-form-container{
+	width: 80%;
+	padding: 10px 20px;
+	display: flex;
+	gap: 40px;
+}
+.contact-us-form-title{
+	margin-top: 20px;
+}
+.contact-us-form-title h1{
+	font-size: 22px;
+	color: hsla(40, 70%, 20%, 1.0);
+}
+.contact-us-form{
+	display: flex;
+	flex-direction: column;
+}
+.fields{
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+}
+.form-fields{
+	width: 40%;
+}
+.text-area{
+	width: 60%;
+}
+.text-area textarea{
+	width: 100%;
+	height: 23vh;
+	padding: 10px;
+	font-size: 16px;
+	background: none;
+	border: 1px solid hsla(240, 70%, 20%, 1.0);
+	color: hsla(240, 70%, 20%, 1.0);
+}
+.text-area textarea:hover{
+	border: 2px solid #00f;
+}
+.button{
+	text-align: right;
+	margin: 30px 0px;
+}
+.button input[type = "submit"]{
+	width: 10%;
+	height: 20px;
+	cursor: pointer;
+	border: none;
+	font-size: 16px;
+	box-shadow: 0px 2px 2px 2px hsla(240, 70%, 20%, 0.2);
+}
+.button input[type = "submit"]:hover{
+	background-color: hsla(240, 70%, 20%, 1.0);
+	color: white;
+}
+@media (max-width:768px){
+	.form-fields{
+		width: 100%;
+	}
+	.text-area{
+		width: 100%;
+	}
+	.main{
+		flex-direction: column;
+	}
+	.contact-us-side-bar{
+		width: 100%;
+	}
+	.contact-us-form-container{
+		width: 100%;
+		flex-direction: column;
+	}
+	..contact-us-form-title h1{
+	text-align: center;
+	}
+}
+
+
+
+

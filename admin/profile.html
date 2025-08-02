@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PEACE FOR WOMEN - WEST NILE - ADMIN</title>
+	<link rel="stylesheet" type="text/css" href="styles/admin-styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/fontawesome/css/all.min.css">
+	<link rel="icon" href="images/favicon.png" type="images/png">
+</head>
+<body>
+	<div class="admin-container">
+		<div class="admin-header">
+			<div class="admin-logo">
+				<img src="images/p4w wn logo.png" width="120px" height="50px">
+			</div>
+			<div class="admin-login-status-bar">
+				<i class="fa-solid fa-user"></i>
+			</div>
+		</div>
+		<main class="admin-items">
+			<div class="admin-side-bar">
+				<ul class="admin-side-bar-links">
+					<li><a href="posts.html">Posts</a></li>
+					<li><a href="profile.html">Profile</a></li>
+					<li><a href="job-advert.html">Jobs</a></li>
+					<li><a href="business-admin.html">Business</a></li>
+					<li><a href="projects-form.html">Projects</a></li>
+					<li><a href="#">Support</a>
+						<ul class="admin-sublinks">
+							<li><a href="donors.html">Donors</a></li>
+							<li><a href="networks.html">Networks</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Team</a>
+						<ul class="admin-sublinks">
+							<li><a href="staff.html">Staff</a></li>
+							<li><a href="board.html">Board of Directors</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Users</a>
+						<ul class="admin-sublinks">
+							<li><a href="#"><i class="fa-solid fa-edit"></i> Create</a></li>
+							<li><a href="users.html"><i class="fa-solid fa-eye"></i> View</a></li>
+						</ul>
+					</li>
+					<li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+				</ul>
+			</div>
+			<div class="dashboard">
+				<div class="admin-nav">
+					<ul class="admin-nav-links">
+						<li><a href="admin.html"><i class="fa-solid fa-dashboard"></i> Dashboard</a></li>
+						<li><a href="#">+ Create new</a></li>
+						<li><a href="#" id="openFormLink" class="open-popup-link"><i class="fa-solid fa-edit"></i>Edit</a></li>
+						<li><a href="comments.html"><i class="fa-solid fa-message"></i> <span class="msg-count">3</span></a></li>
+					</ul>
+				</div>
+				<div class="dashboard-item">
+					<div class="profile-section">
+						<div class="profile-display">
+							<h1>Organization's profile will appear here</h1>
+							<div class="popup-container" id="formPopup">
+								<div class="popup-content">
+									<span class="close-btn" id="closeFormBtn">&times;</span>
+									<form name="profile-form" class="profile-update-form" method="POST" action="#">
+										<fieldset class="basic-info">
+											<legend>Basic information</legend>
+											<div class="form-details">
+												<div class="form-fields">
+													<label for="org-name">Organization Name</label>
+													<input type="text" name="org-name">
+												</div>
+												<div class="form-fields">
+													<label for="tagline">Tagline/Motto</label>
+													<input type="text" name="tagline">
+												</div>
+												<div class="form-fields">
+													<label for="org-description">Description</label>
+													<textarea name="org-description"></textarea>
+												</div>
+												<div class="form-fields">
+													<label for="logo">Logo</label><br>
+													<input type="file" name="logo">
+												</div>
+											</div>
+										</fieldset>
+										<fieldset class="about-us">
+											<legend>About us</legend>
+											<div class="form-details">
+												<div class="form-fields">
+													<label for="background">Background/History</label>
+													<textarea name="background"></textarea>
+												</div>
+												<div class="form-fields">
+													<label for="our-work">What we do</label>
+													<textarea name="our-work"></textarea>
+												</div>
+												<div class="form-fields">
+													<label for="work-places">Where we work</label>
+													<textarea name="work-places"></textarea>
+												</div>
+												<div class="form-fields">
+													<label for="mission">Mission</label>
+													<input type="text" name="mission">
+												</div>
+												<div class="form-fields">
+													<label for="vision">Vision</label>
+													<input type="text" name="vision">
+												</div>
+												<div class="form-fields">
+													<label for="core-values">Core values</label>
+													<textarea name="core-values"></textarea>
+												</div>
+											</div>
+										</fieldset>
+										<fieldset class="contact-details">
+											<legend>Contact details</legend>
+											<div class="form-details">
+												<div class="form-fields">
+													<label for="address">Address</label>
+													<textarea name="address"></textarea>
+												</div>
+												<div class="form-fields">
+													<label for="phone1">Phone 1</label>
+													<input type="tel" name="phone1">
+												</div>
+												<div class="form-fields">
+													<label for="phone2">Phone 2</label>
+													<input type="tel" name="phone2">
+												</div>
+												<div class="form-fields">
+													<label for="email">Email</label>
+													<input type="email" name="email">
+												</div>
+												<div class="form-fields">
+													<label for="postal-address">Postal Address</label>
+													<input type="number" name="postal-address">
+												</div>
+												<p>Social links <span style="font-style: italic;">(Provide links to your social media pages)</span></p>
+												<div class="form-fields">
+													<label for="facebook">Facebook</label>
+													<input type="url" name="facebook">
+												</div>
+												<div class="form-fields">
+													<label for="linkedin">LinkedIn</label>
+													<input type="url" name="linkedin">
+												</div>
+												<div class="form-fields">
+													<label for="instagram">Instagram</label>
+													<input type="url" name="instagram">
+												</div>
+												<div class="form-fields">
+													<label for="whatsapp">WhatsApp</label>
+													<input type="url" name="whatsapp">
+												</div>
+												<div class="form-fields">
+													<label for="youtube">Youtube</label>
+													<input type="url" name="youtube">
+												</div>
+												<div class="form-fields">
+													<label for="x">X</label>
+													<input type="url" name="x">
+												</div>
+											</div>
+										</fieldset>
+										<div class="form-fields">
+											<input type="submit" name="submit" value="Save">
+										</div>
+									</form>
+								</div>
+							</div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+								Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+								Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.
+								Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.
+								Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script type="text/javascript" src="script/javas.js"></script>
+</body>
+</html>

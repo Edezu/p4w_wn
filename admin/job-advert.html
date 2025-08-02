@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PEACE FOR WOMEN - WEST NILE - ADMIN</title>
+	<link rel="stylesheet" type="text/css" href="styles/admin-styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/fontawesome/css/all.min.css">
+	<link rel="icon" href="images/favicon.png" type="images/png">
+</head>
+<body>
+	<div class="admin-container">
+		<div class="admin-header">
+			<div class="admin-logo">
+				<img src="images/p4w wn logo.png" width="120px" height="50px">
+			</div>
+			<div class="admin-login-status-bar">
+				<i class="fa-solid fa-user"></i>
+			</div>
+		</div>
+		<main class="admin-items">
+			<div class="admin-side-bar">
+				<ul class="admin-side-bar-links">
+					<li><a href="posts.html">Posts</a></li>
+					<li><a href="profile.html">Profile</a></li>
+					<li><a href="job-advert.html">Jobs</a></li>
+					<li><a href="business-admin.html">Business</a></li>
+					<li><a href="projects-form.html">Projects</a></li>
+					<li><a href="#">Support</a>
+						<ul class="admin-sublinks">
+							<li><a href="donors.html">Donors</a></li>
+							<li><a href="networks.html">Networks</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Team</a>
+						<ul class="admin-sublinks">
+							<li><a href="staff.html">Staff</a></li>
+							<li><a href="board.html">Board of Directors</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Users</a>
+						<ul class="admin-sublinks">
+							<li><a href="#"><i class="fa-solid fa-edit"></i> Create</a></li>
+							<li><a href="users.html"><i class="fa-solid fa-eye"></i> View</a></li>
+						</ul>
+					</li>
+					<li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+				</ul>
+			</div>
+			<div class="dashboard">
+				<div class="admin-nav">
+					<ul class="admin-nav-links">
+						<li><a href="admin.html"><i class="fa-solid fa-dashboard"></i> Dashboard</a></li>
+						<li><a href="comments.html"><i class="fa-solid fa-message"></i><span class="msg-count"><sup>3</sup></span></a></li>
+					</ul>
+				</div>
+				<div class="dashboard-item">
+					<div class="jobs-container">
+						<div class="top-bar">
+							<h1>Manage jobs at once</h1>
+							<button class="accordion-button">+ Create new advert</button>
+						</div>
+						<div class="job-items">
+							<div class="new-job-form">
+								<div class="hidden-container">
+									<form name="new-job-entry" class="job-form">
+									<div class="job-form-elements">
+										<label for="job-title">Job Title</label>
+										<input type="text" name="job-title">
+									</div>
+									<div class="job-form-elements">
+										<label for="job-type">Job type</label>
+										<select name="job-type">
+											<option value="#" disabled selected>Choose job type</option>
+											<option value="full time">Full time</option>
+											<option value="part time">Part time</option>
+											<option value="internship">Internship</option>
+											<option value="volunteer">Volunteer</option>
+										</select>
+									</div>
+									<div class="job-form-elements">
+										<label for="supervisor">Reports to</label>
+										<input type="text" name="supervisor">
+									</div>
+									<div class="job-form-elements">
+										<label for="job-location">Location</label>
+										<input type="text" name="job-location">
+									</div>
+									<div class="job-form-elements">
+										<label for="salary">Salary</label>
+										<input type="text" name="salary">
+									</div>
+									<div class="job-form-elements">
+										<label for="department">Department/Team</label>
+										<input type="text" name="department">
+									</div>
+									<div class="job-form-elements">
+										<label for="description">Description</label>
+										<textarea name="description"></textarea>
+									</div>
+									<div class="job-form-elements">
+										<label for="responsibilities">Key responsibilities</label>
+										<textarea name="responsibilities"></textarea>
+									</div>
+									<div class="job-form-elements">
+										<label for="requirements">Requirements</label>
+										<textarea name="requirements"></textarea>
+									</div>
+									<div class="job-form-elements">
+										<label for="instructions">Application Instructions</label>
+										<textarea name="instructions"></textarea>
+									</div>
+									<div class="job-form-elements">
+										<label for="closing-date">Closing date</label>
+										<input type="date" name="closing-date">
+									</div>
+									<div class="job-form-elements">
+										<label for="disclaimer">Disclaimer</label>
+										<textarea name="disclaimer"></textarea>
+									</div>
+									<div class="job-form-elements">
+										<input type="submit" name="submit" value="Save" class="save-button">
+									</div>
+								</form>
+								</div>
+							</div>
+							<div class="jobs-display">
+								<h2>Display of all job adverts here...</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script type="text/javascript" src="script/javas.js"></script>
+</body>
+</html>
